@@ -1,3 +1,5 @@
+import { MAX_AMOUNT, MIN_AMOUNT } from "./application";
+
 export const site = {
   name: "PathLoan",
   tagline: "Straightforward installment loans, online.",
@@ -5,8 +7,8 @@ export const site = {
   email: "support@pathloan.example",
   hours: "Mon–Fri 8am–8pm ET · Sat 9am–5pm ET",
   address: "100 Example Avenue, Suite 200, Anytown, USA",
-  minLoan: 300,
-  maxLoan: 3000,
+  minLoan: MIN_AMOUNT,
+  maxLoan: MAX_AMOUNT,
 };
 
 export const navLinks = [
@@ -15,13 +17,18 @@ export const navLinks = [
   { href: "/rates-and-fees", label: "Rates & Fees" },
   { href: "/about", label: "About Us" },
   { href: "/faq", label: "FAQ" },
+  { href: "/loan-status", label: "Loan Status" },
   { href: "/contact", label: "Contact" },
 ];
 
 /** Illustrative APR used by the calculator. Replace with real lender pricing. */
-export const ILLUSTRATIVE_APR = 0.99;
+export const ILLUSTRATIVE_APR = 0.1;
 
-export function monthlyPayment(principal: number, apr: number, months: number): number {
+export function monthlyPayment(
+  principal: number,
+  apr: number,
+  months: number,
+): number {
   const r = apr / 12;
   if (r === 0) return principal / months;
   return (principal * r) / (1 - Math.pow(1 + r, -months));

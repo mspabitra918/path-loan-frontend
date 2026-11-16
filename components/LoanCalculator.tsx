@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { ILLUSTRATIVE_APR, monthlyPayment, site, usd } from "@/lib/site";
 
-const TERMS = [6, 9, 12, 18];
+const TERMS = [12, 24, 36, 48];
 
 export default function LoanCalculator() {
-  const [amount, setAmount] = useState(1200);
-  const [term, setTerm] = useState(12);
+  const [amount, setAmount] = useState(10000);
+  const [term, setTerm] = useState(24);
 
   const payment = monthlyPayment(amount, ILLUSTRATIVE_APR, term);
   const total = payment * term;
@@ -25,7 +25,7 @@ export default function LoanCalculator() {
         type="range"
         min={site.minLoan}
         max={site.maxLoan}
-        step={50}
+        step={100}
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
         className="calc__range"
@@ -38,7 +38,11 @@ export default function LoanCalculator() {
       </div>
 
       <div className="calc__label">Repayment term</div>
-      <div className="calc__terms" role="radiogroup" aria-label="Repayment term">
+      <div
+        className="calc__terms"
+        role="radiogroup"
+        aria-label="Repayment term"
+      >
         {TERMS.map((t) => (
           <button
             key={t}
@@ -64,12 +68,15 @@ export default function LoanCalculator() {
         </div>
       </div>
 
-      <Link href={`/apply?amount=${amount}&term=${term}`} className="btn btn--primary btn--block btn--lg">
+      <Link
+        href={`/apply?amount=${amount}&term=${term}`}
+        className="btn btn--primary btn--block btn--lg"
+      >
         Check My Options
       </Link>
       <p className="calc__note">
-        Illustrative only, based on {Math.round(ILLUSTRATIVE_APR * 100)}% APR. Your actual rate and
-        terms depend on approval and state of residence.
+        Illustrative only, based on {Math.round(ILLUSTRATIVE_APR * 100)}% APR.
+        Your actual rate and terms depend on approval and state of residence.
       </p>
     </div>
   );

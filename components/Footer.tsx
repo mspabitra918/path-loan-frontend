@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { navLinks, site } from "@/lib/site";
+import { legalDocs } from "@/lib/legal";
 import Logo from "./Logo";
 
 export default function Footer() {
@@ -36,22 +37,27 @@ export default function Footer() {
         <div>
           <h4>Legal</h4>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">E-Sign Consent</a></li>
-            <li><a href="#">Responsible Lending</a></li>
+            {legalDocs.map((d) => (
+              <li key={d.slug}>
+                <Link href={`/legal/${d.slug}`}>{d.title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="container footer__legal">
         <p>
-          <strong>Important disclosure:</strong> Installment loans are an expensive form of credit
-          intended for short-term financial needs, not a long-term solution. Customers with credit
-          difficulties should seek credit counseling. Loan approval, amount, APR and terms depend on
-          credit qualification, state of residence and verification of information. Not all
-          applicants will qualify. Examples on this site are illustrative only.
+          <strong>Important disclosure:</strong> Installment loans are an
+          expensive form of credit intended for short-term financial needs, not
+          a long-term solution. Customers with credit difficulties should seek
+          credit counseling. Loan approval, amount, APR and terms depend on
+          credit qualification, state of residence and verification of
+          information. Not all applicants will qualify. Examples on this site
+          are illustrative only.
         </p>
-        <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} {site.name}. All rights reserved.
+        </p>
       </div>
     </footer>
   );

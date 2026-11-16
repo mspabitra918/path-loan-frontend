@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CtaBanner from "@/components/CtaBanner";
-import { monthlyPayment, usd } from "@/lib/site";
+import { monthlyPayment, site, usd } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Rates & Fees" };
 
@@ -37,16 +37,28 @@ export default function RatesPage() {
       <section className="section">
         <div className="container">
           <div className="grid grid--3 stat-row">
-            <div className="stat"><strong>$300 – $3,000</strong><span>Loan amounts</span></div>
-            <div className="stat"><strong>6 – 18 months</strong><span>Repayment terms</span></div>
-            <div className="stat"><strong>79% – 149%</strong><span>Example APR range*</span></div>
+            <div className="stat">
+              <strong>
+                {usd(site.minLoan)} – {usd(site.maxLoan)}
+              </strong>
+              <span>Loan amounts</span>
+            </div>
+            <div className="stat">
+              <strong>12 – 48 months</strong>
+              <span>Repayment terms</span>
+            </div>
+            <div className="stat">
+              <strong>10%</strong>
+              <span> APR</span>
+            </div>
           </div>
 
           <div className="section__head section__head--left">
             <h2>Representative loan examples</h2>
             <p className="muted">
-              Monthly payments assume on-time payments with no prepayment. Your APR is based on
-              your application, credit profile and state of residence.
+              Monthly payments assume on-time payments with no prepayment. Your
+              APR is based on your application, credit profile and state of
+              residence.
             </p>
           </div>
 
@@ -70,15 +82,17 @@ export default function RatesPage() {
                     <td>{e.months} months</td>
                     <td>{usd(e.pay, 2)}</td>
                     <td>{usd(e.charge, 2)}</td>
-                    <td><strong>{usd(e.total, 2)}</strong></td>
+                    <td>
+                      <strong>{usd(e.total, 2)}</strong>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="tiny">
-            *Examples are illustrative only and are not an offer of credit. Actual rates, terms and
-            availability vary by state.
+            *Examples are illustrative only and are not an offer of credit.
+            Actual rates, terms and availability vary by state.
           </p>
         </div>
       </section>
@@ -89,8 +103,8 @@ export default function RatesPage() {
             <span className="eyebrow">Fees</span>
             <h2>Fee schedule</h2>
             <p className="muted">
-              We keep fees simple. Any applicable fee will be disclosed in your loan agreement
-              before you sign.
+              We keep fees simple. Any applicable fee will be disclosed in your
+              loan agreement before you sign.
             </p>
           </div>
           <ul className="fee-list card">
@@ -109,16 +123,18 @@ export default function RatesPage() {
           <div className="card">
             <h3>Understanding APR</h3>
             <p className="muted">
-              Annual Percentage Rate (APR) expresses the yearly cost of borrowing, including
-              interest. Because our loans are short-term, the total dollar cost is often more
-              useful — that&apos;s why we always show your finance charge and total of payments.
+              Annual Percentage Rate (APR) expresses the yearly cost of
+              borrowing, including interest. Because our loans are short-term,
+              the total dollar cost is often more useful — that&apos;s why we
+              always show your finance charge and total of payments.
             </p>
           </div>
           <div className="card">
             <h3>Save by paying early</h3>
             <p className="muted">
-              Interest accrues on your outstanding principal. Making extra payments or paying your
-              loan off early reduces the total interest you pay — with no penalty.
+              Interest accrues on your outstanding principal. Making extra
+              payments or paying your loan off early reduces the total interest
+              you pay — with no penalty.
             </p>
           </div>
         </div>
