@@ -19,13 +19,17 @@ export default function ContactPage() {
             <div className="card">
               <span className="feature__icon">📞</span>
               <h3>Call us</h3>
-              <p><a href={`tel:${site.phone}`}>{site.phone}</a></p>
+              <p>
+                <a href={`tel:${site.phone}`}>{site.phone}</a>
+              </p>
               <p className="muted">{site.hours}</p>
             </div>
             <div className="card">
               <span className="feature__icon">✉️</span>
               <h3>Email</h3>
-              <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+              <p>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </p>
               <p className="muted">Replies within one business day</p>
             </div>
             <div className="card">
